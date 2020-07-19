@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Card
 {
-    String suit;
-    String rank;
+    private String suit;
+    private String rank;
     //can other player see the face of the card?
-    bool flippedOver = false;
+    private bool flippedOver = false;
 
     public Card(String suit, String rank) {
         switch (suit) {
