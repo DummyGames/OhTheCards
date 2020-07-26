@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card
+public class Card : MonoBehaviour
 {
-    private String suit;
+    
+   private String suit;
     private String rank;
     //can other player see the face of the card?
     private bool flippedOver = false;
@@ -66,9 +67,9 @@ public class Card
     }
 
     //TODO: do this please!
-    public bool Compare(Card c) {
+    /*public bool Compare(Card c) {
             
-    }
+    }*/
 
     
 }
