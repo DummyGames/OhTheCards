@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {   //the set of cards in a deck 
-    private Stack Set = new Stack();
+    public Stack StackOfCards;
+    public GameObject theCard;
     // Start is called before the first frame update
     void Start()
     {
-       /* for (int i = 0; i < 4; i++) {
-            for (int i = 2; i < 14; i++)
-            {
-                Set.Push(new GameObject("Card"));
-            }
-        }*/
+        StackOfCards = new Stack();
+         for (int i = 0; i < 4; i++) {
+             for (int j = 2; j < 14; j++)
+            { 
+                StackOfCards.Push(theCard);
+             }
+         }
     }
 
-    
+
 }
