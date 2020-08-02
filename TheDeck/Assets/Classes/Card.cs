@@ -33,7 +33,7 @@ public class Card : MonoBehaviour
     //can other player see the face of the card?
     private bool flippedOver = false;
 
-    public Card(String suit, Rank rank) {
+    public Card(Suit suit, Rank rank) {
         switch (suit) {
             case "Clubs":
             case "Diamonds":
