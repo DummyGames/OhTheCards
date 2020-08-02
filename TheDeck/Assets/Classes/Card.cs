@@ -69,7 +69,7 @@ public class Card : MonoBehaviour
     //Suits do not matter currently
     public bool Compare(Card c) {
         Rank cardRank = c.getRank;
-        return rank >= cardRank ? true : false; 
+        return rank >= cardRank; 
     }
 
     
