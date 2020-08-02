@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 562437994131716654}
   - component: {fileID: 4182358601064605869}
   - component: {fileID: 7280906193570580766}
+  - component: {fileID: 2607465676086506861}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -93,3 +94,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2607465676086506861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450409548563948157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c6e48e419a07d4b807bd91fff317fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
