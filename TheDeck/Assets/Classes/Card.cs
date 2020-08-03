@@ -5,13 +5,35 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    
-   private String suit;
+    public enum Suit {
+        Spades, 
+        Clubs,
+        Diamonds,
+        Hearts
+    }
+
+    public enum Rank {
+        Ace=1, 
+        Two,  
+        Three,
+        Four, 
+        Five, 
+        Six,  
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queen,
+        King
+    }
+
+    private String suit;
     private String rank;
     //can other player see the face of the card?
     private bool flippedOver = false;
 
-    public Card(String suit, String rank) {
+    public Card(Suit suit, Rank rank) {
         switch (suit) {
             case "Clubs":
             case "Diamonds":
@@ -25,36 +47,14 @@ public class Card : MonoBehaviour
                 break;
         }
 
-        switch (rank) {
-            case "One":
-            case "Two":
-            case "Three":
-            case "Four":
-            case "Five":
-            case "Six":
-            case "Seven":
-            case "Eight":
-            case "Nine":
-            case "Ten":
-            case "King":
-            case "Queen":
-            case "Ace":
-            case "Jack":
-                this.rank = rank;
-                break;
-
-            default:
-                throw new ArgumentException("Illegal value for rank: '" + rank + "'");
-                break;
-
-        }
+        this.rank = rank;
     }
 
-    public String getSuit() {
+    public Suit getSuit() {
         return suit;
     }
 
-    public String getRank() {
+    public Rank getRank() {
         return rank;
     }
 
@@ -66,10 +66,11 @@ public class Card : MonoBehaviour
         flippedOver = flippedOver ? false : true;
     }
 
-    //TODO: do this please!
-    /*public bool Compare(Card c) {
-            
-    }*/
+    //Suits do not matter currently
+    public bool Compare(Card c) {
+        Rank cardRank = c.getRank;
+        return rank >= cardRank; 
+    }
 
     
 }
