@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {   //the set of cards in a deck 
-    public ArrayList<Card> listOfCards;
+    public List<Card> listOfCards;
     public GameObject theCard;
     private GameObject newCard;
-    private Random random = new Random();
+    private System.Random random = new System.Random();
     // Start is called before the first frame update
     void Start()
     {
-        list = new ArrayList<Card>();
+        listOfCards = new List<Card>();
         for (int i = 0; i < 4; i++) {
             for (int j = 1; j <= 13; j++) {
                 Card card = new Card(i, j);
-                list.Add(card);
+                listOfCards.Add(card);
             }
         }
         shuffle();
@@ -41,11 +41,12 @@ public class Deck : MonoBehaviour
     }
 
     public void shuffle() {
-        ArrayList<Card> array = new ArrayList<Card>();
+        List<Card> array = new List<Card>();
         int count = listOfCards.Count;
         for (int i = 0; i < count; i++) {
             int randomNum = random.Next(0, listOfCards.Count - 1);
-            array.Add(listOfCards.RemoveAt(randomNum));
+            array.Add(listOfCards[randomNum]);
+            listOfCards.RemoveAt(randomNum);
         }
         listOfCards = array;
     }

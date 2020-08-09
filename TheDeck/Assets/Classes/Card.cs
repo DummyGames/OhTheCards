@@ -28,34 +28,34 @@ public class Card : MonoBehaviour
         King
     }
 
-    private String suit;
-    private String rank;
+    private Suit suit;
+    private Rank rank;
     //can other player see the face of the card?
     private bool flippedOver = false;
 
-    public Card(Suit suit, Rank rank) {
-        switch (suit) {
-            case "Clubs":
-            case "Diamonds":
-            case "Hearts":
-            case "Spades":
-                this.suit = suit;
-                break;
+    public Card(int suit, int rank) {
+        //switch (suit) {
+        //    case "Clubs":
+        //    case "Diamonds":
+        //    case "Hearts":
+        //    case "Spades":
+        //        this.suit = suit;
+        //        break;
 
-            default:
-                throw new ArgumentException("Illegal value for suit: '" + suit + "'");
-                break;
-        }
-
-        this.rank = rank;
+        //    default:
+        //        throw new ArgumentException("Illegal value for suit: '" + suit + "'");
+        //        break;
+        //}
+        this.suit = (Suit) suit;
+        this.rank = (Rank) rank;
     }
 
-    public Suit getSuit() {
-        return suit;
+    public int getSuit() {
+        return (int) suit;
     }
 
-    public Rank getRank() {
-        return rank;
+    public int getRank() {
+        return (int) rank;
     }
 
     public bool isFlipped() {
@@ -68,8 +68,8 @@ public class Card : MonoBehaviour
 
     //Suits do not matter currently
     public bool Compare(Card c) {
-        Rank cardRank = c.getRank;
-        return rank >= cardRank; 
+        int cardRank = c.getRank();
+        return (int) rank >= cardRank; 
     }
 
     
