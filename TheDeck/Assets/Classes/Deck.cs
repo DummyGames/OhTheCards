@@ -6,6 +6,7 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {   //the set of cards in a deck 
     public List<Card> listOfCards;
+    private List<GameObject> listOfObjects;
     public GameObject theCard;
     private GameObject newCard;
     private System.Random random = new System.Random();
@@ -21,9 +22,11 @@ public class Deck : MonoBehaviour
         }
         shuffle();
         //need to figure out how to instantiate a card based on the Card objects we've created
+        listOfObjects = new List<GameObject>();
         foreach(Card c in listOfCards) {
             newCard = Instantiate(theCard);
             newCard.SetActive(false);
+            listOfObjects.Add(newCard);
         }
         //StackOfCards = new Stack();
         // for (int i = 0; i < 4; i++) {
@@ -36,9 +39,17 @@ public class Deck : MonoBehaviour
         // }
     }
 
-    private void initDeck() {
-            
+    public void Draw()
+    {
+        if (listOfCards.Count != 0)
+        {
+            Card poppedCard = listOfCards[0];
+            listOfCards.RemoveAt(0);
+            GameObject card = listOfObjects[0];
+            card.SetActive(true);
+        }
     }
+
 
     public void shuffle() {
         List<Card> array = new List<Card>();

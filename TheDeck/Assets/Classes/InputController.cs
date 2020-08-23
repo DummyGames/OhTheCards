@@ -7,12 +7,14 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    public GameObject theDeck;
+    Deck deckScript;
     float yPos;
     float xPos;
 
     void Start()
     {
-        
+        deckScript = (Deck) theDeck.GetComponent(typeof(Deck));
     }
 
     void Update()
@@ -24,6 +26,7 @@ public class InputController : MonoBehaviour
             xPos = mousePos.x;
             yPos = mousePos.y;
             UnityEngine.Debug.Log("Mouse x: " + xPos + ", Mouse Y: " + yPos);
+            deckScript.Draw();
         }
     }
 }
