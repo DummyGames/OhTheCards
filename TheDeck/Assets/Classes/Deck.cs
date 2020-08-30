@@ -9,6 +9,7 @@ public class Deck : MonoBehaviour
     private List<GameObject> listOfObjects;
     public GameObject theCard;
     private GameObject newCard;
+    private int nextCard;
     private System.Random random = new System.Random();
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Deck : MonoBehaviour
             newCard.SetActive(false);
             listOfObjects.Add(newCard);
         }
+        nextCard = 0;
         //StackOfCards = new Stack();
         // for (int i = 0; i < 4; i++) {
         //     for (int j = 2; j < 15; j++)
@@ -45,7 +47,7 @@ public class Deck : MonoBehaviour
         {
             Card poppedCard = listOfCards[0];
             listOfCards.RemoveAt(0);
-            GameObject card = listOfObjects[0];
+            GameObject card = listOfObjects[nextCard++];
             card.SetActive(true);
         }
     }
