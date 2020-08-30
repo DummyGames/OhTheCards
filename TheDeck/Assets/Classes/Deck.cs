@@ -22,7 +22,7 @@ public class Deck : MonoBehaviour
             }
         }
         shuffle();
-        //need to figure out how to instantiate a card based on the Card objects we've created
+
         listOfObjects = new List<GameObject>();
         foreach(Card c in listOfCards) {
             newCard = Instantiate(theCard);
@@ -30,15 +30,6 @@ public class Deck : MonoBehaviour
             listOfObjects.Add(newCard);
         }
         nextCard = 0;
-        //StackOfCards = new Stack();
-        // for (int i = 0; i < 4; i++) {
-        //     for (int j = 2; j < 15; j++)
-        //    {
-        //        Debug.Log(j);
-        //       
-        //        StackOfCards.Push(newCard);
-        //     }
-        // }
     }
 
     public void Draw()
