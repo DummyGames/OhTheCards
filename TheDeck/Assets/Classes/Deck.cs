@@ -32,7 +32,7 @@ public class Deck : MonoBehaviour
         nextCard = 0;
     }
 
-    public void Draw()
+    public void Draw(Vector3 pos)
     {
         if (listOfCards.Count != 0)
         {
@@ -40,6 +40,7 @@ public class Deck : MonoBehaviour
             listOfCards.RemoveAt(0);
             GameObject card = listOfObjects[nextCard++];
             card.SetActive(true);
+            card.gameObject.transform.position = pos;
         }
     }
 

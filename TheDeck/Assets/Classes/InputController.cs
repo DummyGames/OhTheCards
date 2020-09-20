@@ -24,17 +24,17 @@ public class InputController : MonoBehaviour
         {
             if (DetectDeck())
             {
+                //TEMP LOGGING
                 Vector3 mousePos = Input.mousePosition;
                 xPos = mousePos.x;
                 yPos = mousePos.y;
-                UnityEngine.Debug.Log("Mouse x: " + xPos + ", Mouse Y: " + yPos);
-                deckScript.Draw();
+                UnityEngine.Debug.Log("Mouse x: " + xPos + ", Mouse y: " + yPos);
+                deckScript.Draw(MovePosition());
             }
         }
     }
 
     public bool DetectDeck() {
-        //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -43,5 +43,16 @@ public class InputController : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    public Vector3 MovePosition()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            return hit.point;
+        }
+        return new Vector3();
     }
 }
