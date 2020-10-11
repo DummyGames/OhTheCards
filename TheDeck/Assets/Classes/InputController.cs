@@ -11,6 +11,8 @@ public class InputController : MonoBehaviour
     Deck deckScript;
     float yPos;
     float xPos;
+    bool movingCard = false;
+    GameObject card;
 
     void Start()
     {
@@ -19,19 +21,35 @@ public class InputController : MonoBehaviour
 
     void Update()
     {
+
         //primary mouse click
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            if (DetectDeck())
+            if (DetectDeck() && !movingCard)
             {
-                //TEMP LOGGING
-                Vector3 mousePos = Input.mousePosition;
-                xPos = mousePos.x;
-                yPos = mousePos.y;
-                UnityEngine.Debug.Log("Mouse x: " + xPos + ", Mouse y: " + yPos);
-                deckScript.Draw(MovePosition());
+                card = deckScript.GetCard();
+                movingCard = true;
+                //card.gameObject.transform.position = MovePosition();
+                MoveCard(card);
+            }
+            if (card != null && movingCard)
+            {
+                MoveCard(card);
             }
         }
+        else 
+        {
+            movingCard = false;
+        }
+    }
+
+    public void MoveCard(GameObject card) {
+        Vector3 pos = MovePosition();
+        pos.y = (float) -1.6;
+        card.gameObject.transform.position = pos;
+        //card.gameObject.transform.LookAt(MovePosition());
+        //card.gameObject.transform.position = Vector3.MoveTowards(card.gameObject.transform.position, MovePosition(), 100f);
+        UnityEngine.Debug.DrawLine(card.gameObject.transform.position, MovePosition(), Color.red);
     }
 
     public bool DetectDeck() {
@@ -45,6 +63,7 @@ public class InputController : MonoBehaviour
         return false;
     }
 
+    // Gets mouse position
     public Vector3 MovePosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
