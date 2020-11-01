@@ -9,8 +9,7 @@ public class InputController : MonoBehaviour
 {
     public GameObject theDeck;
     Deck deckScript;
-    float yPos;
-    float xPos;
+    // boolean to detect is player is currently moving card
     bool movingCard = false;
     GameObject card;
 
@@ -25,13 +24,14 @@ public class InputController : MonoBehaviour
         //primary mouse click
         if (Input.GetMouseButton(0))
         {
-            if (DetectDeck() && !movingCard)
+            // if the player has clicked on the deck and isn't already moving card
+            if (DetectDeckClick() && !movingCard)
             {
                 card = deckScript.GetCard();
                 movingCard = true;
-                //card.gameObject.transform.position = MovePosition();
                 MoveCard(card);
             }
+            // if there was a card left in the deck
             if (card != null && movingCard)
             {
                 MoveCard(card);
@@ -45,14 +45,13 @@ public class InputController : MonoBehaviour
 
     public void MoveCard(GameObject card) {
         Vector3 pos = MovePosition();
+        // just above the game boards Y position
         pos.y = (float) -1.6;
         card.gameObject.transform.position = pos;
-        //card.gameObject.transform.LookAt(MovePosition());
-        //card.gameObject.transform.position = Vector3.MoveTowards(card.gameObject.transform.position, MovePosition(), 100f);
-        UnityEngine.Debug.DrawLine(card.gameObject.transform.position, MovePosition(), Color.red);
     }
 
-    public bool DetectDeck() {
+
+    public bool DetectDeckClick() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))

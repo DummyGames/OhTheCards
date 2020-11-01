@@ -30,47 +30,34 @@ public class Card : MonoBehaviour
 
     private Suit suit;
     private Rank rank;
-    //can other player see the face of the card?
+    // can other player see the face of the card?
     private bool flippedOver = false;
 
     public Card(int suit, int rank) {
-        //switch (suit) {
-        //    case "Clubs":
-        //    case "Diamonds":
-        //    case "Hearts":
-        //    case "Spades":
-        //        this.suit = suit;
-        //        break;
-
-        //    default:
-        //        throw new ArgumentException("Illegal value for suit: '" + suit + "'");
-        //        break;
-        //}
         this.suit = (Suit) suit;
         this.rank = (Rank) rank;
     }
 
-    public int getSuit() {
+    public int GetSuit() {
         return (int) suit;
     }
 
-    public int getRank() {
+    public int GetRank() {
         return (int) rank;
     }
 
-    public bool isFlipped() {
+    public bool IsFlipped() {
         return flippedOver;
     }
 
-    public void flip() {
+    public void Flip() {
         flippedOver = flippedOver ? false : true;
     }
 
     //Suits do not matter currently
     public bool Compare(Card c) {
-        int cardRank = c.getRank();
+        int cardRank = c.GetRank();
         return (int) rank >= cardRank; 
     }
 
-    
 }
