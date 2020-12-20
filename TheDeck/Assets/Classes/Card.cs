@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public enum Suit {
-        Spades, 
+    public enum Suit 
+    {
+        Spades,
         Clubs,
         Diamonds,
         Hearts
     }
 
-    public enum Rank {
-        Ace=1, 
-        Two,  
+    public enum Rank 
+    {
+        Ace = 1,
+        Two,
         Three,
-        Four, 
-        Five, 
-        Six,  
+        Four,
+        Five,
+        Six,
         Seven,
         Eight,
         Nine,
@@ -28,34 +30,44 @@ public class Card : MonoBehaviour
         King
     }
 
-    private Suit suit;
-    private Rank rank;
+    public Suit suit;
+    public Rank rank;
     // can other player see the face of the card?
     private bool flippedOver = false;
 
-    public Card(int suit, int rank) {
-        this.suit = (Suit) suit;
-        this.rank = (Rank) rank;
+    public void SetSuit(int suit)
+    {
+        this.suit = (Suit)suit;
     }
 
-    public int GetSuit() {
+    public void SetRank(int rank)
+    {
+        this.rank = (Rank)rank;
+    }
+
+    public int GetSuit() 
+    {
         return (int) suit;
     }
 
-    public int GetRank() {
+    public int GetRank() 
+    {
         return (int) rank;
     }
 
-    public bool IsFlipped() {
+    public bool IsFlipped() 
+    {
         return flippedOver;
     }
 
-    public void Flip() {
+    public void Flip() 
+    {
         flippedOver = flippedOver ? false : true;
     }
 
     //Suits do not matter currently
-    public bool Compare(Card c) {
+    public bool Compare(Card c) 
+    {
         int cardRank = c.GetRank();
         return (int) rank >= cardRank; 
     }
