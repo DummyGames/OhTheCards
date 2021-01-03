@@ -20,8 +20,7 @@ public class InputController : MonoBehaviour
 
     void Update()
     {
-
-        //primary mouse click
+        // primary mouse click
         if (Input.GetMouseButton(0))
         {
             // if the player has clicked on the deck and isn't already moving card
@@ -31,7 +30,7 @@ public class InputController : MonoBehaviour
                 movingCard = true;
                 MoveCard(card);
             }
-            // if there was a card left in the deck
+            // if the player is currently moving a card
             if (card != null && movingCard)
             {
                 MoveCard(card);
@@ -43,15 +42,18 @@ public class InputController : MonoBehaviour
         }
     }
 
-    public void MoveCard(GameObject card) {
+    public void MoveCard(GameObject card) 
+    {
         Vector3 pos = MovePosition();
         // just above the game boards Y position
         pos.y = (float) -1.6;
         card.gameObject.transform.position = pos;
     }
 
-
-    public bool DetectDeckClick() {
+    // TODO: make this return the object that was hit instead of being
+    // just the deck object
+    public bool DetectDeckClick() 
+    {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))

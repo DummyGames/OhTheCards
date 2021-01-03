@@ -71,5 +71,4 @@ public class Card : MonoBehaviour
         int cardRank = c.GetRank();
         return (int) rank >= cardRank; 
     }
-
 }

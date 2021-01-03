@@ -19,7 +19,6 @@ public class Deck : MonoBehaviour
                 Card card = newCard.GetComponent<Card>();
                 card.SetSuit(i);
                 card.SetRank(j);
-                Debug.Log("Suit: " + card.GetSuit() + ", Rank: " + card.GetRank());
                 newCard.SetActive(false);
                 listOfCardObjects.Add(newCard);
             }
@@ -39,7 +38,8 @@ public class Deck : MonoBehaviour
         return null;
     }
 
-    public void Shuffle() {
+    public void Shuffle() 
+    {
         List<GameObject> array = new List<GameObject>();
         int count = listOfCardObjects.Count;
         for (int i = 0; i < count; i++) {
@@ -49,6 +49,4 @@ public class Deck : MonoBehaviour
         }
         listOfCardObjects = array;
     }
-
-
 }
