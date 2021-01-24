@@ -24,9 +24,16 @@ public class InputController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             // if the player has clicked on the deck and isn't already moving card
-            if (DetectDeckClick() && !movingCard)
+            if (DetectClick().Equals(theDeck) && !movingCard)
             {
                 card = deckScript.GetCard();
+                movingCard = true;
+                MoveCard(card);
+            }
+            GameObject detectCard;
+            if ((detectCard = DetectClick()).CompareTag("Card") && !movingCard) 
+            {
+                card = detectCard;
                 movingCard = true;
                 MoveCard(card);
             }
@@ -52,16 +59,15 @@ public class InputController : MonoBehaviour
 
     // TODO: make this return the object that was hit instead of being
     // just the deck object
-    public bool DetectDeckClick() 
+    public GameObject DetectClick() 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject.Equals(theDeck))
-                return true;
+            return hit.collider.gameObject;
         }
-        return false;
+        return new GameObject();
     }
 
     // Gets mouse position

@@ -19,6 +19,7 @@ public class Deck : MonoBehaviour
                 Card card = newCard.GetComponent<Card>();
                 card.SetSuit(i);
                 card.SetRank(j);
+                newCard.tag = "Card";
                 newCard.SetActive(false);
                 listOfCardObjects.Add(newCard);
             }
