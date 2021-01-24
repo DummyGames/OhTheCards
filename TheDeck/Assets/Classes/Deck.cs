@@ -19,6 +19,7 @@ public class Deck : MonoBehaviour
                 Card card = newCard.GetComponent<Card>();
                 card.SetSuit(i);
                 card.SetRank(j);
+                newCard.tag = "Card";
                 newCard.SetActive(false);
                 listOfCardObjects.Add(newCard);
             }
@@ -35,7 +36,11 @@ public class Deck : MonoBehaviour
             poppedCard.SetActive(true);
             return poppedCard;
         }
-        return null;
+        else
+        {
+            this.gameObject.SetActive(false);
+            return null;
+        }
     }
 
     public void Shuffle() 
@@ -47,6 +52,7 @@ public class Deck : MonoBehaviour
             array.Add(listOfCardObjects[randomNum]);
             listOfCardObjects.RemoveAt(randomNum);
         }
+        
         listOfCardObjects = array;
     }
 }
