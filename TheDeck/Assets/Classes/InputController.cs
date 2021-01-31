@@ -35,7 +35,6 @@ public class InputController : MonoBehaviour
             {
                 cardObject = detectCard;
                 movingCard = true;
-                Card cardScript = (Card) cardObject.GetComponent("Card");
                 MoveCard(cardObject);
             }
             // if the player is currently moving a card
@@ -47,6 +46,16 @@ public class InputController : MonoBehaviour
         else 
         {
             movingCard = false;
+        }
+
+        if (Input.GetMouseButton(1)) 
+        {
+            GameObject detectCard;
+            if ((detectCard = DetectClick()).CompareTag("Card"))
+            {
+                Card cardScript = (Card) detectCard.GetComponent("Card");
+                cardScript.Flip();
+            }
         }
     }
 
