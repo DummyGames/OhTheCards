@@ -11,7 +11,7 @@ public class InputController : MonoBehaviour
     Deck deckScript;
     // boolean to detect is player is currently moving card
     bool movingCard = false;
-    GameObject card;
+    GameObject cardObject;
 
     void Start()
     {
@@ -26,26 +26,36 @@ public class InputController : MonoBehaviour
             // if the player has clicked on the deck and isn't already moving card
             if (DetectClick().Equals(theDeck) && !movingCard)
             {
-                card = deckScript.GetCard();
+                cardObject = deckScript.GetCard();
                 movingCard = true;
-                MoveCard(card);
+                MoveCard(cardObject);
             }
             GameObject detectCard;
             if ((detectCard = DetectClick()).CompareTag("Card") && !movingCard) 
             {
-                card = detectCard;
+                cardObject = detectCard;
                 movingCard = true;
-                MoveCard(card);
+                MoveCard(cardObject);
             }
             // if the player is currently moving a card
-            if (card != null && movingCard)
+            if (cardObject != null && movingCard)
             {
-                MoveCard(card);
+                MoveCard(cardObject);
             }
         }
         else 
         {
             movingCard = false;
+        }
+
+        if (Input.GetMouseButton(1)) 
+        {
+            GameObject detectCard;
+            if ((detectCard = DetectClick()).CompareTag("Card"))
+            {
+                Card cardScript = (Card) detectCard.GetComponent("Card");
+                cardScript.Flip();
+            }
         }
     }
 

@@ -63,6 +63,8 @@ public class Card : MonoBehaviour
     public void Flip() 
     {
         flippedOver = flippedOver ? false : true;
+        float x = flippedOver ? 270f : 90f;
+        this.gameObject.transform.rotation = Quaternion.Euler(x, 0, 0);
     }
 
     //Suits do not matter currently
