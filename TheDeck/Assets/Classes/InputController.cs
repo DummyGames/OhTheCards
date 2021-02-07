@@ -12,6 +12,7 @@ public class InputController : MonoBehaviour
     // boolean to detect is player is currently moving card
     bool movingCard = false;
     GameObject cardObject;
+    int timer = 0;
 
     void Start()
     {
@@ -51,12 +52,16 @@ public class InputController : MonoBehaviour
         if (Input.GetMouseButton(1)) 
         {
             GameObject detectCard;
-            if ((detectCard = DetectClick()).CompareTag("Card"))
+            if (timer <= 0 && (detectCard = DetectClick()).CompareTag("Card"))
             {
+                timer = 240;
                 Card cardScript = (Card) detectCard.GetComponent("Card");
                 cardScript.Flip();
             }
         }
+
+        if (timer > 0)
+            timer--;
     }
 
     public void MoveCard(GameObject card) 
