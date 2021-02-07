@@ -9,9 +9,8 @@ public class InputController : MonoBehaviour
 {
     public GameObject theDeck;
     Deck deckScript;
-    // boolean to detect is player is currently moving card
-    bool movingCard = false;
-    GameObject cardObject;
+    bool isMovingObject = false;
+    GameObject movingObject;
     int timer = 0;
 
     void Start()
@@ -25,55 +24,68 @@ public class InputController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             // if the player has clicked on the deck and isn't already moving card
-            if (DetectClick().Equals(theDeck) && !movingCard)
+            if (DetectClick().Equals(theDeck) && !isMovingObject)
             {
-                cardObject = deckScript.GetCard();
-                movingCard = true;
-                MoveCard(cardObject);
+                movingObject = deckScript.GetCard();
+                isMovingObject = true;
+                MoveObject(movingObject);
             }
             GameObject detectCard;
-            if ((detectCard = DetectClick()).CompareTag("Card") && !movingCard) 
+            if ((detectCard = DetectClick()).CompareTag("Card") && !isMovingObject) 
             {
-                cardObject = detectCard;
-                movingCard = true;
-                MoveCard(cardObject);
+                movingObject = detectCard;
+                isMovingObject = true;
+                MoveObject(movingObject);
             }
-            // if the player is currently moving a card
-            if (cardObject != null && movingCard)
-            {
-                MoveCard(cardObject);
-            }
-        }
-        else 
-        {
-            movingCard = false;
+            
         }
 
+        // right click
         if (Input.GetMouseButton(1)) 
         {
-            GameObject detectCard;
-            if (timer <= 0 && (detectCard = DetectClick()).CompareTag("Card"))
-            {
-                timer = 240;
-                Card cardScript = (Card) detectCard.GetComponent("Card");
-                cardScript.Flip();
+            if (!isMovingObject) { 
+                GameObject detectObject = DetectClick();
+                if (timer <= 0) 
+                {
+                    if (detectObject.CompareTag("Card"))
+                    {
+                        timer = 240;
+                        Card cardScript = (Card)detectObject.GetComponent("Card");
+                        cardScript.Flip();
+                    }
+                }
+                if (detectObject.CompareTag("Deck"))
+                {
+                    movingObject = detectObject;
+                    isMovingObject = true;
+                    MoveObject(movingObject);
+                }
             }
+        }
+
+        if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1)) 
+        {
+            isMovingObject = false;
+        }
+
+        // if the player is currently moving an object
+        if (movingObject != null && isMovingObject)
+        {
+            MoveObject(movingObject);
         }
 
         if (timer > 0)
             timer--;
     }
 
-    public void MoveCard(GameObject card) 
+    public void MoveObject(GameObject moveObject) 
     {
         Vector3 pos = MovePosition();
         // just above the game boards Y position
         pos.y = (float) -1.6;
-        card.gameObject.transform.position = pos;
+        moveObject.gameObject.transform.position = pos;
     }
 
-    // TODO: make this return the object that was hit instead of being
-    // just the deck object
     public GameObject DetectClick() 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
