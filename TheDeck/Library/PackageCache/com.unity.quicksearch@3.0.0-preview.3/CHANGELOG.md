@@ -1,0 +1,51 @@
+# Changelog
+
+## [3.0.0-preview.3] - 2020-12-06
+- Sync with 2021.1.0a10 (c69a17d70606)
+- Add support to update the search view context providers (case 1296559)
+- Change "scene" to "hierarchy" and "s:" to "h:"
+- Do not show empty explicit search provider tabs (case 1296463)
+- Filter providers when creating a new search context.
+- Fix asset store settings actions.
+- Fix IQueryHandler type constraint and word matcher naming.
+- Improve the asynchronous resolution of search index artifacts.
+- Persist the show status bar setting globally instead of per search context.
+- Remove icon support from SearchQuery assets.
+- Remove openContextual API.
+- Remove support for 2020.1.
+- Remove tab instead of shrinking.
+- Rename context menu items for saved search query.
+- Select which search tab to show in last place.
+- Set search indexing task as low priority.
+- Show a different help string if only the current search tab has no result.
+- Show the search result total count in the status bar.
+
+## [3.0.0-preview.2] - 2020-11-11
+- Sync with 10fd0d6f6164
+- Add a SearchQuery dedicated inspector that does a preview of the query.
+- Add error highlighting when a query is illegal.
+- Add grip icon in Index manager reorderable lists.
+- Add i: as a new filter for interface searching.
+- Add new Analytics: lots of new GenericEvent and a new ReportUsage
+- Add new search tabs.
+- Add support for subset of SearchItems during filtering.
+- Better API on SearchItem to get preview and thumbnail.
+- Colors are now identified with # sign for proper parsing.
+- Do not fetch obsolete static APIs.
+- Do not fetch preview in list view when file is over 16 mb.
+- Fix asset store search result formatting.
+- Fix context menu displaying empty tooltip.
+- Fix package manager search provider always listing packages event if not needed.
+- Fix Page-Up and Page-Down in grid view.
+- Improve list, grid and details view and preview generation.
+- Improve resizing of search tabs.
+- Lots of UI tweaks.
+- Optimize group item sorting.
+- Optimize quick search window first load time from 270 ms to 90 ms.
+- Optimize scene indexing.
+- Persist ViewState in the SearchQuery to restore icon size and other view specific state.
+- Search index document paths when looking for words
+- Tweak UI so thumbnail view is closer to the Project Browser.
+- Use Alt+Left/Right to cycle through search tabs.
+- Various QueryEngine improvements and optimizations.
+- Wrap around the list selection.
