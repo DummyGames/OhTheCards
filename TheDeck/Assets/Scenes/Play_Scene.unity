@@ -301,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deck 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8681694268256404840, guid: 490d833214263db48bf21062befb4ba3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Deck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 490d833214263db48bf21062befb4ba3, type: 3}
 --- !u!1 &747411734 stripped
