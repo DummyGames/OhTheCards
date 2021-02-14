@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Card
   - Deck
+  - HandArea
   layers:
   - Default
   - TransparentFX
