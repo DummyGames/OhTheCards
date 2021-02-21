@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4182358601064605869}
   - component: {fileID: 7280906193570580766}
   - component: {fileID: 2607465676086506861}
+  - component: {fileID: 7852808540214837142}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -89,11 +90,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5450409548563948157}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.139167, y: 1.659414, z: 0.35753432}
-  m_Center: {x: 0.007211918, y: -0.009605076, z: 0.09204663}
+  m_Size: {x: 1.139167, y: 1.5995586, z: 0.18716823}
+  m_Center: {x: 0.007211918, y: 0.000401025, z: 0.006863567}
 --- !u!114 &2607465676086506861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +109,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suit: 0
   rank: 0
+--- !u!54 &7852808540214837142
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450409548563948157}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
